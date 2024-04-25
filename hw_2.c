@@ -53,19 +53,19 @@ int main(void){
         printf("輸入一個a到n的字元:");
         scanf("%c",&ch2);
         while(ch2<=97||110<=ch2){
-            printf("格式錯誤!輸入一個a到n的字元:");
+            printf("\n格式錯誤!輸入一個a到n的字元:");
             scanf("%c",&ch2);
-        }                                                  //t=2
-        t=ch2-97;                                          //  c
-        for(i=0;i<=t;i++){                                 // bc
-            for(j=i;j<t;j++){                              //abc
+        }                                                  
+        t=ch2-97;                                          
+        for(i=0;i<=t;i++){                                 
+            for(j=i;j<t;j++){                              
                 printf(" "); 
             }  
             for(j=0,k=0;j<=i;j++){
-                printf("%c\n",ch2-j+k);
+                printf("%c",ch2-i+k);
                 k++;
             }
-            printf("%c\n",ch2-j+k);
+            printf("\n");
         } 
         
         

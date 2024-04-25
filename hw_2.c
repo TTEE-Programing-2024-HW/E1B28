@@ -26,6 +26,7 @@ int main(void){
             return 0;
         }
         printf("enter password:");
+        fflush(stdin);
         scanf("%d",&password);
         if(password==2023){
             break;
@@ -51,7 +52,7 @@ int main(void){
             ch=getch();
             if(ch==65||ch==97||ch==66||ch==98||ch==67||ch==99)
                 break;  
-            printf("輸入正確格式!");
+            printf("輸入正確格式!\n");
         }
         
     if(ch==65||ch==97){
@@ -79,17 +80,28 @@ int main(void){
         ch=getch();
     }
     else if(ch==66||ch==98){
-        system("pause");
-        return 0;
+        int n,a,b;
+        system("cls");
+        printf("輸入一個1~9的數字n:");
+        for(;;){
+            fflush(stdin);
+            scanf("%d",&n);
+            if(1<=n&&n<=9)
+            break;
+            printf("輸入正確格式!(1~9):\n");
+        }
+        for(a=1;a<=n;a++){
+            for(b=1;b<=n;b++){
+                printf("%2d*%d=%2d",a,b,a*b);
+            }
+            printf("\n");
+        }
+        ch=getch();
     }
     else if(ch==67||ch==99){
         system("pause");
         return 0;
     }
-    else{
-
-    }
-    
 }
     
 

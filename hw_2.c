@@ -36,43 +36,61 @@ int main(void){
         count++;
         }
     }
-    system("cls");
-    printf("________________________\n");
-    printf("|                       |\n");
-    printf("|  A-a   畫出直角三角形 |\n");
-    printf("|                       |\n"); 
-	printf("|  B-b   顯示乘法表     |\n");
-	printf("|                       |\n");
-	printf("|  C-c   結束           |\n");
-	printf("|_______________________|\n");
-    fflush(stdin);
-    ch=getch();
+    while(1){
+        system("cls");
+        printf("________________________\n");
+        printf("|                       |\n");
+        printf("|  A-a   畫出直角三角形 |\n");
+        printf("|                       |\n"); 
+	    printf("|  B-b   顯示乘法表     |\n");
+	    printf("|                       |\n");
+	    printf("|  C-c   結束           |\n");
+	    printf("|_______________________|\n");
+        for(;;){
+            fflush(stdin);
+            ch=getch();
+            if(ch==65||ch==97||ch==66||ch==98||ch==67||ch==99)
+                break;  
+            printf("輸入正確格式!");
+        }
+        
     if(ch==65||ch==97){
         int i,j,k;
         system("cls");
         printf("輸入一個a到n的字元:");
+        fflush(stdin);
         scanf("%c",&ch2);
-        while(ch2<=97||110<=ch2){
+    while(ch2<97||110<ch2){
             printf("\n格式錯誤!輸入一個a到n的字元:");
+            fflush(stdin);
             scanf("%c",&ch2);
         }                                                  
         t=ch2-97;                                          
-        for(i=0;i<=t;i++){                                 
-            for(j=i;j<t;j++){                              
-                printf(" "); 
-            }  
-            for(j=0,k=0;j<=i;j++){
-                printf("%c",ch2-i+k);
-                k++;
-            }
+    for(i=0;i<=t;i++){                                 
+        for(j=i;j<t;j++){                              
+            printf(" "); 
+        }  
+        for(j=0,k=0;j<=i;j++){
+            printf("%c",ch2-i+k);
+            k++;
+        }
             printf("\n");
         } 
-        
-        
+        ch=getch();
     }
-    if(ch==66||ch==98)
-    if(ch==67||ch==99)
+    else if(ch==66||ch==98){
+        system("pause");
+        return 0;
+    }
+    else if(ch==67||ch==99){
+        system("pause");
+        return 0;
+    }
+    else{
 
-    system("pause");
-    return 0;
+    }
+    
+}
+    
+
 }

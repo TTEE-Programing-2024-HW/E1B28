@@ -19,7 +19,7 @@ int main(void)
     printf("|            2024/4/25  |\n");
     printf("|_______________________|\n");
     printf("\n");
-    for (;;)
+    for (;;) // 輸入密碼
     {
         if (count == 3)
         {
@@ -42,7 +42,7 @@ int main(void)
             count++;
         }
     }
-    while (1)
+    while (1)  // 面板設計
     {
         system("cls");
         printf("________________________\n");
@@ -62,7 +62,7 @@ int main(void)
             printf("輸入正確格式!\n");
         }
 
-        if (ch == 65 || ch == 97)
+        if (ch == 65 || ch == 97) // A功能
         {
             int i, j, k;
             system("cls");
@@ -92,7 +92,7 @@ int main(void)
             }
             ch = getch();
         }
-        else if (ch == 66 || ch == 98)
+        else if (ch == 66 || ch == 98) // B功能
         {
             int n, a, b;
             system("cls");
@@ -116,7 +116,7 @@ int main(void)
             }
             ch = getch();
         }
-        else if (ch == 67 || ch == 99)
+        else if (ch == 67 || ch == 99) // C功能
         {
             printf("Continue? (y/n)");
             for(;;){
@@ -133,4 +133,4 @@ int main(void)
             }
         }
     }
-}
+} 

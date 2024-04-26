@@ -76,6 +76,7 @@ int main(void)
                 scanf("%c", &ch2);
             }
             t = ch2 - 97;
+            system("cls");
             for (i = 0; i <= t; i++)
             {
                 for (j = i; j < t; j++)
@@ -104,6 +105,7 @@ int main(void)
                     break;
                 printf("輸入正確格式!(1~9):\n");
             }
+            system("cls");
             for (a = 1; a <= n; a++)
             {
                 for (b = 1; b <= n; b++)
@@ -116,8 +118,19 @@ int main(void)
         }
         else if (ch == 67 || ch == 99)
         {
-            system("pause");
-            return 0;
+            printf("Continue? (y/n)");
+            for(;;){
+                fflush(stdin);
+                ch=getche();
+                if (ch==89||ch==121){
+                    break;
+                }
+                else if(ch==78||ch==110){
+                    system("pause");
+                    return 0;
+                }    
+                printf("\n輸入正確格式!(y/n):");
+            }
         }
     }
 }

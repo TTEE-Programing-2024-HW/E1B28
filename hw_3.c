@@ -5,13 +5,13 @@
 
 void menu();
 void afunction(char main[10][10]);
-void bfunction();
+char bfunction(char main[10][10]);
 void cfunction();
 void dfunction();
 int main()
 {
 
-    int password, count = 0, i, j,x,y;
+    int password, count = 0, i, j, x, y;
     char ch, ch2;
 
     printf("  ^,,,^\n"); // 面板設計
@@ -95,7 +95,8 @@ int main()
                     break;
                 case 'b':
                 case 'B':
-                    bfunction();
+                    bfunction(seat);
+
                     break;
                 case 'c':
                 case 'C':
@@ -103,13 +104,26 @@ int main()
                     break;
                 case 'd':
                 case 'D':
-                    dfunction();
+                    printf("Continue? (y/n)");
+                    for (;;)
+                    {
+                        ch = getche();
+                        if (ch == 89 || ch == 121)
+                        {
+                            break;
+                        }
+                        else if (ch == 78 || ch == 110)
+                        {
+                            system("pause");
+                            return 0;
+                        }
+                        printf("\n輸入正確格式!(y/n):");
+                    }
                     break;
                 default:
                     printf("輸入正確格式");
                     break;
                 }
-                ch=getch();
             }
         }
         else
@@ -129,7 +143,9 @@ int main()
 }
 void afunction(char main[10][10])
 {
+    system("cls");
     int i, j;
+    char ch;
     for (i = 0; i < 10; i++)
     {
         for (j = 0; j < 10; j++)
@@ -138,16 +154,71 @@ void afunction(char main[10][10])
         }
         printf("\n");
     }
+    ch = getch();
 }
-void bfunction()
+char bfunction(char main[10][10])
 {
-    printf("bfunction!");
+    int x, y, i, j;
+    char ch;
+    printf("seats(1~4):");
+    ch = getche();
+    switch (ch)
+    {
+    case '1':
+        for (;;)
+        {
+            srand(time(NULL));
+            x = rand() % 9 + 1;
+            y = rand() % 9 + 1;
+            if (main[x][y] !='*')
+            {
+                main[x][y] = '@';
+                break;
+            }
+        }
+        break;
+    case '2':
+        /* code */
+        break;
+    case '3':
+        /* code */
+        break;
+    case '4':
+        /* code */
+        break;
+    default:
+        break;
+    }
+    printf("\n");
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            printf("%c", main[i][j]);
+        }
+        printf("\n");
+    }
+    printf("是否滿意座位(y/n)");
+    ch = getch();
+    for (;;)
+    {
+        if (ch == 'n' || ch == 'N')
+        {   
+            system("cls");
+            break;
+        }
+        else if (ch == 'y' || ch == 'Y')
+        {
+            return main[x][y];
+            break;
+        }
+        else{
+            printf("輸入正確格式(y/n)");
+            ch = getch();
+        }
+    }
 }
 void cfunction()
 {
     printf("cfunction!");
-}
-void dfunction()
-{
-    printf("dfunction!");
 }

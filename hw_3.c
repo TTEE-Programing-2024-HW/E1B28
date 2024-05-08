@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h>
+#define MAX 20
 
 void menu();
 void afunction(char main[10][10]);
 char bfunction(char main[10][10]);
-void cfunction();
+char cfunction(char main[10][10]);
 void dfunction();
 int main()
 {
@@ -100,7 +101,7 @@ int main()
                     break;
                 case 'c':
                 case 'C':
-                    cfunction();
+                    cfunction(seat);
                     break;
                 case 'd':
                 case 'D':
@@ -170,7 +171,7 @@ char bfunction(char main[10][10])
             srand(time(NULL));
             x = rand() % 9 + 1;
             y = rand() % 9 + 1;
-            if (main[x][y] !='*')
+            if (main[x][y] == '-')
             {
                 main[x][y] = '@';
                 break;
@@ -178,13 +179,78 @@ char bfunction(char main[10][10])
         }
         break;
     case '2':
-        /* code */
+        for (;;)
+        {
+            srand(time(NULL));
+            x = rand() % 9 + 1;
+            y = rand() % 9 + 1;
+            if ((main[x][y] == '-') && (main[x][y+1] == '-'))
+            {
+                main[x][y] = '@';
+                main[x][y+1] = '@';
+                break;
+            }
+            else if ((main[x][y] == '-') && (main[x][y-1] == '-'))
+            {
+                main[x][y] = '@';
+                main[x][y-1] = '@';
+                break;
+            }
+        }
         break;
     case '3':
-        /* code */
+        for (;;)
+        {
+            srand(time(NULL));
+            x = rand() % 9 + 1;
+            y = rand() % 9 + 1;
+            if ((main[x][y] == '-') && (main[x][y+1] == '-') && (main[x][y+2] == '-'))
+            {
+                main[x][y] = '@';
+                main[x][y+1] = '@';
+                main[x][y+2] = '@';
+                break;
+            }
+            else if ((main[x][y] == '-') && (main[x][y-1] == '-') && (main[x][y-2] == '-'))
+            {
+                main[x][y] = '@';
+                main[x][y-1] = '@';
+                main[x][y-2] = '@';
+                break;
+            }
+        }
         break;
     case '4':
-        /* code */
+        for (;;)
+        {
+            srand(time(NULL));
+            x = rand() % 9 + 1;
+            y = rand() % 9 + 1;
+            if ((main[x][y] == '-') && (main[x][y+1] == '-') && (main[x][y+2] == '-') && (main[x][y+3] == '-'))
+            {
+                main[x][y] = '@';
+                main[x][y+1] = '@';
+                main[x][y+2] = '@';
+                main[x][y+3] = '@';
+                break;
+            }
+            else if ((main[x][y] == '-') && (main[x][y-1] == '-') && (main[x][y-2] == '-') && (main[x][y-3] == '-'))
+            {
+                main[x][y] = '@';
+                main[x][y-1] = '@';
+                main[x][y-2] = '@';
+                main[x][y-3] = '@';
+                break;
+            }
+            else if((main[x][y] == '-') && (main[x][y+1] == '-') && (main[x+1][y] == '-') && (main[x+1][y+1] == '-'))
+            {
+                main[x][y] = '@';
+                main[x][y+1] = '@';
+                main[x+1][y] = '@';
+                main[x+1][y+1] = '@';
+                break;
+            }
+        }
         break;
     default:
         break;
@@ -203,22 +269,107 @@ char bfunction(char main[10][10])
     for (;;)
     {
         if (ch == 'n' || ch == 'N')
-        {   
+        {
+            for (i = 0; i < 10; i++)
+            {
+                for (j = 0; j < 10; j++)
+                {
+                    if(main[i][j]=='@'){
+                        main[i][j]='-';
+                    }
+                }
+            }
             system("cls");
             break;
         }
         else if (ch == 'y' || ch == 'Y')
         {
-            return main[x][y];
+            for (i = 0; i < 10; i++)
+            {
+                for (j = 0; j < 10; j++)
+                {
+                    if(main[i][j]=='@'){
+                        main[i][j]='*';
+                    }
+                }
+            }
             break;
         }
-        else{
+        else
+        {
             printf("輸入正確格式(y/n)");
             ch = getch();
         }
     }
 }
-void cfunction()
+char cfunction(char main[10][10])
 {
-    printf("cfunction!");
+    system("cls");
+    int i, j;
+    char ch;
+    int num[MAX]={0},num1[MAX]={0};
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            printf("%c", main[i][j]);
+        }
+        printf("\n");
+    }
+    printf("輸入座位(ex.1-2,2-9):");
+    for(;;){
+
+        while()
+
+
+        if(1<=num<=9 && 1<=num1<=9 && ch=='-' && main[num][num1]=='-')
+        break;
+        printf("格式錯誤或重位!(ex.1-2,2-9):");    
+    }
+    main[num][num1]='@';
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
+            printf("%c", main[i][j]);
+        }
+        printf("\n");
+    }
+    printf("是否滿意座位(y/n)");
+    ch = getch();
+    for (;;)
+    {
+        if (ch == 'n' || ch == 'N')
+        {
+            for (i = 0; i < 10; i++)
+            {
+                for (j = 0; j < 10; j++)
+                {
+                    if(main[i][j]=='@'){
+                        main[i][j]='-';
+                    }
+                }
+            }
+            system("cls");
+            break;
+        }
+        else if (ch == 'y' || ch == 'Y')
+        {
+            for (i = 0; i < 10; i++)
+            {
+                for (j = 0; j < 10; j++)
+                {
+                    if(main[i][j]=='@'){
+                        main[i][j]='*';
+                    }
+                }
+            }
+            break;
+        }
+        else
+        {
+            printf("輸入正確格式(y/n)");
+            ch = getch();
+        }
+    }
 }

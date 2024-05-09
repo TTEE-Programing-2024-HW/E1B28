@@ -68,7 +68,7 @@ int main()
         }
         seat[x][y] = '*';
     }
-
+    system("cls");
     printf("enter password:");
     fflush(stdin);
     scanf("%d", &password);
@@ -76,6 +76,7 @@ int main()
     {
         if (password == 2024)
         {
+            system("cls");
             printf("歡迎!按任意鍵繼續");
             ch = getch();
             for (;;)
@@ -129,14 +130,15 @@ int main()
         }
         else
         {
+            system("cls");
             count++;
             if (count == 3)
             {
-                printf("\n密碼錯誤%d次結束程式", count);
+                printf("密碼錯誤%d次結束程式", count);
                 system("pause");
                 return 0;
             }
-            printf("\n密碼錯誤%d次，再輸入一次:", count);
+            printf("密碼錯誤%d次，再輸入一次:", count);
             fflush(stdin);
             scanf("%d", &password);
         }
@@ -161,6 +163,7 @@ char bfunction(char main[10][10])
 {
     int x, y, i, j;
     char ch;
+    system("cls");
     printf("seats(1~4):");
     ch = getche();
     switch (ch)
@@ -184,16 +187,16 @@ char bfunction(char main[10][10])
             srand(time(NULL));
             x = rand() % 9 + 1;
             y = rand() % 9 + 1;
-            if ((main[x][y] == '-') && (main[x][y+1] == '-'))
+            if ((main[x][y] == '-') && (main[x][y + 1] == '-'))
             {
                 main[x][y] = '@';
-                main[x][y+1] = '@';
+                main[x][y + 1] = '@';
                 break;
             }
-            else if ((main[x][y] == '-') && (main[x][y-1] == '-'))
+            else if ((main[x][y] == '-') && (main[x][y - 1] == '-'))
             {
                 main[x][y] = '@';
-                main[x][y-1] = '@';
+                main[x][y - 1] = '@';
                 break;
             }
         }
@@ -204,18 +207,18 @@ char bfunction(char main[10][10])
             srand(time(NULL));
             x = rand() % 9 + 1;
             y = rand() % 9 + 1;
-            if ((main[x][y] == '-') && (main[x][y+1] == '-') && (main[x][y+2] == '-'))
+            if ((main[x][y] == '-') && (main[x][y + 1] == '-') && (main[x][y + 2] == '-'))
             {
                 main[x][y] = '@';
-                main[x][y+1] = '@';
-                main[x][y+2] = '@';
+                main[x][y + 1] = '@';
+                main[x][y + 2] = '@';
                 break;
             }
-            else if ((main[x][y] == '-') && (main[x][y-1] == '-') && (main[x][y-2] == '-'))
+            else if ((main[x][y] == '-') && (main[x][y - 1] == '-') && (main[x][y - 2] == '-'))
             {
                 main[x][y] = '@';
-                main[x][y-1] = '@';
-                main[x][y-2] = '@';
+                main[x][y - 1] = '@';
+                main[x][y - 2] = '@';
                 break;
             }
         }
@@ -226,28 +229,28 @@ char bfunction(char main[10][10])
             srand(time(NULL));
             x = rand() % 9 + 1;
             y = rand() % 9 + 1;
-            if ((main[x][y] == '-') && (main[x][y+1] == '-') && (main[x][y+2] == '-') && (main[x][y+3] == '-'))
+            if ((main[x][y] == '-') && (main[x][y + 1] == '-') && (main[x][y + 2] == '-') && (main[x][y + 3] == '-'))
             {
                 main[x][y] = '@';
-                main[x][y+1] = '@';
-                main[x][y+2] = '@';
-                main[x][y+3] = '@';
+                main[x][y + 1] = '@';
+                main[x][y + 2] = '@';
+                main[x][y + 3] = '@';
                 break;
             }
-            else if ((main[x][y] == '-') && (main[x][y-1] == '-') && (main[x][y-2] == '-') && (main[x][y-3] == '-'))
+            else if ((main[x][y] == '-') && (main[x][y - 1] == '-') && (main[x][y - 2] == '-') && (main[x][y - 3] == '-'))
             {
                 main[x][y] = '@';
-                main[x][y-1] = '@';
-                main[x][y-2] = '@';
-                main[x][y-3] = '@';
+                main[x][y - 1] = '@';
+                main[x][y - 2] = '@';
+                main[x][y - 3] = '@';
                 break;
             }
-            else if((main[x][y] == '-') && (main[x][y+1] == '-') && (main[x+1][y] == '-') && (main[x+1][y+1] == '-'))
+            else if ((main[x][y] == '-') && (main[x][y + 1] == '-') && (main[x + 1][y] == '-') && (main[x + 1][y + 1] == '-'))
             {
                 main[x][y] = '@';
-                main[x][y+1] = '@';
-                main[x+1][y] = '@';
-                main[x+1][y+1] = '@';
+                main[x][y + 1] = '@';
+                main[x + 1][y] = '@';
+                main[x + 1][y + 1] = '@';
                 break;
             }
         }
@@ -255,7 +258,7 @@ char bfunction(char main[10][10])
     default:
         break;
     }
-    printf("\n");
+    system("cls");
     for (i = 0; i < 10; i++)
     {
         for (j = 0; j < 10; j++)
@@ -274,8 +277,9 @@ char bfunction(char main[10][10])
             {
                 for (j = 0; j < 10; j++)
                 {
-                    if(main[i][j]=='@'){
-                        main[i][j]='-';
+                    if (main[i][j] == '@')
+                    {
+                        main[i][j] = '-';
                     }
                 }
             }
@@ -288,8 +292,9 @@ char bfunction(char main[10][10])
             {
                 for (j = 0; j < 10; j++)
                 {
-                    if(main[i][j]=='@'){
-                        main[i][j]='*';
+                    if (main[i][j] == '@')
+                    {
+                        main[i][j] = '*';
                     }
                 }
             }
@@ -306,8 +311,8 @@ char cfunction(char main[10][10])
 {
     system("cls");
     int i, j;
-    char ch;
-    int num[MAX]={0},num1[MAX]={0};
+    char ch, ch2;
+    int num[MAX] = {0}, num1[MAX] = {0};
     for (i = 0; i < 10; i++)
     {
         for (j = 0; j < 10; j++)
@@ -317,16 +322,30 @@ char cfunction(char main[10][10])
         printf("\n");
     }
     printf("輸入座位(ex.1-2,2-9):");
-    for(;;){
 
-        while()
+    i = 0;
+    while (1)
+    {
 
+        scanf("%d%c%d%c", &num[i], &ch, &num1[i], &ch2);
+        num[i] = 10 - num[i];
+        if ((num[i] > 9 || num[i] <= 0) || (num1[i] > 9 || num1[i] <= 0) || ch != '-' || main[num[i]][num1[i]] == '*')
+        {
+            printf("輸入格式錯誤或重位(ex.1-2,2-9):");
+            fflush(stdin);
+            continue;
+        }
 
-        if(1<=num<=9 && 1<=num1<=9 && ch=='-' && main[num][num1]=='-')
-        break;
-        printf("格式錯誤或重位!(ex.1-2,2-9):");    
+        i++;
+        if (ch2 != ',')
+            break;
     }
-    main[num][num1]='@';
+
+    for (j = 0; j < i; j++)
+    {
+        main[num[j]][num1[j]] = '@';
+    }
+    system("cls");
     for (i = 0; i < 10; i++)
     {
         for (j = 0; j < 10; j++)
@@ -345,8 +364,9 @@ char cfunction(char main[10][10])
             {
                 for (j = 0; j < 10; j++)
                 {
-                    if(main[i][j]=='@'){
-                        main[i][j]='-';
+                    if (main[i][j] == '@')
+                    {
+                        main[i][j] = '-';
                     }
                 }
             }
@@ -359,8 +379,9 @@ char cfunction(char main[10][10])
             {
                 for (j = 0; j < 10; j++)
                 {
-                    if(main[i][j]=='@'){
-                        main[i][j]='*';
+                    if (main[i][j] == '@')
+                    {
+                        main[i][j] = '*';
                     }
                 }
             }

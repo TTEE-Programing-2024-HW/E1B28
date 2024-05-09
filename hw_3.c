@@ -4,11 +4,10 @@
 #include <conio.h>
 #define MAX 20
 
-void menu();
+void menu(); // 宣告副程式
 void afunction(char main[10][10]);
 char bfunction(char main[10][10]);
 char cfunction(char main[10][10]);
-void dfunction();
 int main()
 {
 
@@ -17,27 +16,27 @@ int main()
 
     printf("  ^,,,^\n"); // 面板設計
     printf(" (‧u‧)\n");
-    printf("|￣U U￣￣￣￣￣￣￣￣￣|\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("| *E1B28余仲恩          |\n");
-    printf("|                       |\n");
-    printf("| *程式設計hw_3         |\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("|    \"按任意鍵繼續\"     |\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("|                       |\n");
-    printf("|            2024/3/21  |\n");
-    printf("|_______________________|\n");
+    printf("|￣U U￣￣￣￣￣￣￣￣￣￣￣|\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("| *E1B28                    |\n");
+    printf("|                           |\n");
+    printf("| *program_hw_3             |\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("|\"click any key to continue\"|\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("|                           |\n");
+    printf("|                2024/5/7   |\n");
+    printf("|___________________________|\n");
     ch = getch();
-    char seat[10][10] =
+    char seat[10][10] = // 座位表設計
         {
             {'\\', '1', '2', '3', '4', '5', '6', '7', '8', '9'},
             {'9', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
@@ -49,7 +48,7 @@ int main()
             {'3', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
             {'2', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
             {'1', '-', '-', '-', '-', '-', '-', '-', '-', '-'}};
-    srand(time(NULL));
+    srand(time(NULL)); // 隨機選位子
     for (i = 0; i < 10; i++)
     {
         x = rand() % 9 + 1;
@@ -58,6 +57,7 @@ int main()
         {
             if (seat[x][y] == '*')
             {
+                srand(time(NULL));
                 x = rand() % 9 + 1;
                 y = rand() % 9 + 1;
             }
@@ -69,7 +69,7 @@ int main()
         seat[x][y] = '*';
     }
     system("cls");
-    printf("enter password:");
+    printf("enter password:"); // 密碼2024
     fflush(stdin);
     scanf("%d", &password);
     for (;;)
@@ -77,12 +77,12 @@ int main()
         if (password == 2024)
         {
             system("cls");
-            printf("歡迎!按任意鍵繼續");
+            printf("wellcome!click any key to continue");
             ch = getch();
             for (;;)
             {
                 system("cls");
-                printf("============================\n");
+                printf("============================\n"); // 選位介面
                 printf("   A.Available seats\n");
                 printf("   B.Arrange for you\n");
                 printf("   C.Choose by yourself\n");
@@ -119,11 +119,12 @@ int main()
                             system("pause");
                             return 0;
                         }
-                        printf("\n輸入正確格式!(y/n):");
+                        printf("\nenter correct format!(y/n):");
                     }
                     break;
                 default:
-                    printf("輸入正確格式");
+                    printf("enter correct format!");
+                    ch = getch();
                     break;
                 }
             }
@@ -134,17 +135,17 @@ int main()
             count++;
             if (count == 3)
             {
-                printf("密碼錯誤%d次結束程式", count);
+                printf("wrong password--%dtimes  end program", count);
                 system("pause");
                 return 0;
             }
-            printf("密碼錯誤%d次，再輸入一次:", count);
+            printf("wrong password--%dtimes,enter again:", count);
             fflush(stdin);
             scanf("%d", &password);
         }
     }
 }
-void afunction(char main[10][10])
+void afunction(char main[10][10]) // 顯示座位表
 {
     system("cls");
     int i, j;
@@ -159,13 +160,25 @@ void afunction(char main[10][10])
     }
     ch = getch();
 }
-char bfunction(char main[10][10])
+char bfunction(char main[10][10]) // 選位(1~4)
 {
     int x, y, i, j;
     char ch;
     system("cls");
     printf("seats(1~4):");
-    ch = getche();
+    for (;;)
+    {
+        ch = getche();
+        if ('1' <= ch && ch <= '4')
+        {
+            system("cls");
+            printf("%c seats:\n", ch);
+            break;
+        }
+
+        printf("\nenter correct format!(1~4)");
+    }
+
     switch (ch)
     {
     case '1':
@@ -258,7 +271,6 @@ char bfunction(char main[10][10])
     default:
         break;
     }
-    system("cls");
     for (i = 0; i < 10; i++)
     {
         for (j = 0; j < 10; j++)
@@ -267,11 +279,11 @@ char bfunction(char main[10][10])
         }
         printf("\n");
     }
-    printf("是否滿意座位(y/n)");
+    printf("agree?(y/n)");
     ch = getch();
     for (;;)
     {
-        if (ch == 'n' || ch == 'N')
+        if (ch == 'n' || ch == 'N') // 將@改成-
         {
             for (i = 0; i < 10; i++)
             {
@@ -286,7 +298,7 @@ char bfunction(char main[10][10])
             system("cls");
             break;
         }
-        else if (ch == 'y' || ch == 'Y')
+        else if (ch == 'y' || ch == 'Y') // 將@改成*
         {
             for (i = 0; i < 10; i++)
             {
@@ -302,7 +314,7 @@ char bfunction(char main[10][10])
         }
         else
         {
-            printf("輸入正確格式(y/n)");
+            printf("\nenter correct format!(y/n)");
             ch = getch();
         }
     }
@@ -321,17 +333,17 @@ char cfunction(char main[10][10])
         }
         printf("\n");
     }
-    printf("輸入座位(ex.1-2,2-9):");
+    printf("enter seats(ex.1-2,2-9):");
 
     i = 0;
-    while (1)
+    while (1) // 輸入選位
     {
 
         scanf("%d%c%d%c", &num[i], &ch, &num1[i], &ch2);
         num[i] = 10 - num[i];
         if ((num[i] > 9 || num[i] <= 0) || (num1[i] > 9 || num1[i] <= 0) || ch != '-' || main[num[i]][num1[i]] == '*')
         {
-            printf("輸入格式錯誤或重位(ex.1-2,2-9):");
+            printf("Enter the correct format or there is already a seat!(ex.1-2,2-9):");
             fflush(stdin);
             continue;
         }
@@ -354,7 +366,7 @@ char cfunction(char main[10][10])
         }
         printf("\n");
     }
-    printf("是否滿意座位(y/n)");
+    printf("agree?(y/n)");
     ch = getch();
     for (;;)
     {
@@ -389,7 +401,7 @@ char cfunction(char main[10][10])
         }
         else
         {
-            printf("輸入正確格式(y/n)");
+            printf("Enter the correct format!(y/n)");
             ch = getch();
         }
     }

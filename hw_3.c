@@ -336,7 +336,7 @@ char cfunction(char main[10][10])
     printf("enter seats(ex.1-2,2-9):");
 
     i = 0;
-    while (1) // 輸入選位
+    while (1) // 連續輸入選位功能
     {
 
         scanf("%d%c%d%c", &num[i], &ch, &num1[i], &ch2);

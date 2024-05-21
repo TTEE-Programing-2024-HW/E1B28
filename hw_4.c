@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-
+void afunction();
+void bfunction();
+void cfunction();
+void dfunction();
+void efunction();
 int main(void)
 {
     int password, count = 0;
-    char ch;
+    char ch, choice;
     printf("  ^,,,^\n"); // ญฑชOณ]ญp
     printf(" (กEuกE)\n");
     printf("|กรU Uกรกรกรกรกรกรกรกรกรกรกร|\n");
@@ -36,8 +40,41 @@ int main(void)
     {
         if (password == 2024)
         {
-            system("pause");
-            return 0;
+            for (;;)
+            {
+                system("cls");
+                printf("----------[Grade System]----------\n");
+                printf("| a. Enter student grades        |\n");
+                printf("| b. Display student grades      |\n");
+                printf("| c. Search for student grades   |\n");
+                printf("| d. Grade ranking               |\n");
+                printf("| e. Exit system                 |\n");
+                printf("----------------------------------\n");
+                fflush(Stdin);
+                choice = getch();
+                switch (ch)
+                {
+                case 'a':
+                case 'A':
+                    /* code */
+                    break;
+                case 'b':
+                case 'B':
+                    break;
+                case 'c':
+                case 'C':
+                    break;
+                case 'd':
+                case 'D':
+                    break;
+                case 'e':
+                case 'E':
+                    break;
+
+                default:
+                    break;
+                }
+            }
         }
         else
         {
@@ -53,3 +90,8 @@ int main(void)
         }
     }
 }
+void afunction(){}
+void bfunction(){}
+void cfunction(){}
+void dfunction(){}
+void efunction(){}

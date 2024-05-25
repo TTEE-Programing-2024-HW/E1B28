@@ -7,8 +7,8 @@ void afunction();
 void bfunction();
 void cfunction();
 void dfunction();
-void efunction();
-struct info 
+int efunction();
+struct info
 {
     char name[MAX];
     char id[6];
@@ -17,14 +17,14 @@ struct info
     int eng;
 };
 struct info student[MAX];
-int temp=0;
-float avg[MAX]={0};
+int temp = 0, rank[MAX];
+float avg[MAX] = {0};
 int main(void)
 {
     int password, count = 0;
     char ch, choice;
     printf("  ^,,,^\n"); // 面板設計
-    printf(" (‧u‧)\n");
+    printf("  (‧u‧)\n");
     printf("|￣U U￣￣￣￣￣￣￣￣￣￣￣|\n");
     printf("|                           |\n");
     printf("|                           |\n");
@@ -54,8 +54,8 @@ int main(void)
         if (password == 2024)
         {
             for (;;)
-            {   
-                system("cls");
+            {
+                system("cls"); // 選單系統
                 printf("----------[Grade System]----------\n");
                 printf("| a. Enter student grades        |\n");
                 printf("| b. Display student grades      |\n");
@@ -81,11 +81,18 @@ int main(void)
                     break;
                 case 'd':
                 case 'D':
+                    dfunction();
                     break;
                 case 'e':
                 case 'E':
-                    break;
-
+                    if (efunction() == 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 default:
                     break;
                 }
@@ -105,93 +112,179 @@ int main(void)
         }
     }
 }
-void afunction(void){
-    int i,n;
+void afunction(void)
+{ // a程式
+    int i, j, n, int_temp;
+    float float_temp, avg_temp[MAX] = {0};
     system("cls");
-    printf("enter_n_student_grade(5~10):");
-    fflush(stdin);
-    scanf("%d",&n);
-    for(i=0;i<n;i++){
-        printf("---------%d-student---------\n",i+1);
-        scanf("%s %s %d %d %d",&student[temp+i].name,&student[temp+i].id,&student[temp+i].math,&student[temp+i].phy,&student[temp+i].eng);
-        for(;;){
-            if(strlen(student[temp+i].id)==6){
+    for (;;)
+    {
+        printf("enter_n_student_grade(5~10):");
+        fflush(stdin);
+        scanf("%d", &n);
+        if (5 <= n && n <= 10)
+            break;
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        printf("---------%d-student---------\n", i + 1);
+        scanf("%s %s %d %d %d", &student[temp + i].name, &student[temp + i].id, &student[temp + i].math, &student[temp + i].phy, &student[temp + i].eng);
+        for (;;)
+        {
+            if (strlen(student[temp + i].id) == 6)
+            {
                 break;
-            }else{
+            }
+            else
+            {
                 printf("format wrong (ID):");
                 fflush(stdin);
-                scanf("%s",&student[temp+i].id);
+                scanf("%s", &student[temp + i].id);
                 continue;
-            }}
-            for(;;){
-                if(0<=student[temp+i].math && student[temp+i].math<=100){
+            }
+        }
+        for (;;)
+        {
+            if (0 <= student[temp + i].math && student[temp + i].math <= 100)
+            {
                 break;
-            }else{
+            }
+            else
+            {
                 printf("format wrong (Math 0~100):");
                 fflush(stdin);
-                scanf("%d",&student[temp+i].math);
+                scanf("%d", &student[temp + i].math);
                 continue;
             }
-            }
-            for(;;){
-                if(0<=student[temp+i].phy && student[temp+i].phy<=100){
+        }
+        for (;;)
+        {
+            if (0 <= student[temp + i].phy && student[temp + i].phy <= 100)
+            {
                 break;
-            }else{
+            }
+            else
+            {
                 printf("format wrong (Physics 0~100):");
                 fflush(stdin);
-                scanf("%d",&student[temp+i].phy);
+                scanf("%d", &student[temp + i].phy);
                 continue;
             }
-            }
-            for(;;){
-                if(0<=student[temp+i].eng && student[temp+i].eng<=100){
+        }
+        for (;;)
+        {
+            if (0 <= student[temp + i].eng && student[temp + i].eng <= 100)
+            {
                 break;
-            }else{
+            }
+            else
+            {
                 printf("format wrong (English 0~100):");
                 fflush(stdin);
-                scanf("%d",&student[temp+i].eng);
+                scanf("%d", &student[temp + i].eng);
                 continue;
             }
-            }
-        
-       
+        }
+    }
+    temp += n;
+    for (i = 0; i < temp; i++)
+    { // 計算平均
+        avg[i] = ((float)(student[i].math + student[i].phy + student[i].eng)) / 3;
+        avg_temp[i] = ((float)(student[i].math + student[i].phy + student[i].eng)) / 3;
+    }
+    for (i = 0; i < temp; i++)
+    { // 排名功能
+        rank[i] = i;
+    }
+    for (i = 0; i < temp; i++)
+    { // 排名功能
+        for (j = 0; j < temp - 1; j++)
+        {
+            if (avg_temp[j] < avg_temp[j + 1])
+            {
+                float_temp = avg_temp[j];
+                avg_temp[j] = avg_temp[j + 1];
+                avg_temp[j + 1] = float_temp;
 
+                int_temp = rank[j];
+                rank[j] = rank[j + 1];
+                rank[j + 1] = int_temp;
+            }
+        }
     }
-    temp+=n;
-    for(i=0;i<temp;i++){
-        avg[i]=((float)(student[i].math+student[i].phy+student[i].eng))/3;
-    }
-}  
-void bfunction(void){
+}
+void bfunction(void)
+{ // b程式
     int i;
     char ch;
     system("cls");
-    printf("No.|Name  |  ID  |Math|Physics|English|avg_grade\n");
-    for(i=0;i<temp;i++){
-        printf("%2d  %-6s %-6s %3d   %3d     %3d     %3.1f\n",i+1,student[i].name,student[i].id,student[i].math,student[i].phy,student[i].eng,avg[i]);
+    printf("|Name  |  ID  |Math|Physics|English|avg_grade\n");
+    for (i = 0; i < temp; i++)
+    {
+        printf(" %-6s %-6s %3d   %3d     %3d     %3.1f\n", student[i].name, student[i].id, student[i].math, student[i].phy, student[i].eng, avg[i]);
     }
-    ch=getch();
+    ch = getch();
 }
-void cfunction(){
-    int i,target=-1;
-    char ch,search[MAX];
+void cfunction()
+{ // c程式
+    int i, target = -1;
+    char ch, search[MAX];
     system("cls");
     printf("search:");
     fflush(stdin);
-    scanf("%s",search);
-    for(i=0;i<temp;i++){
-        if( strcmp(student[i].name,search) == 0 ){
-            target=i;
+    scanf("%s", search);
+    for (i = 0; i < temp; i++)
+    { // 搜尋功能
+        if (strcmp(student[i].name, search) == 0)
+        {
+            target = i;
             break;
         }
     }
-    if(target == -1){
+    if (target == -1)
+    {
         printf("not found data!");
-    }else{
-        printf("|Name  |  ID  |Math|Physics|English|avg_grade\n");
-        printf(" %-6s %-6s %3d   %3d     %3d     %3.1f\n",student[target].name,student[target].id,student[target].math,student[target].phy,student[target].eng,avg[target]);
     }
-    ch=getch();
+    else
+    {
+        printf("|Name  |  ID  |Math|Physics|English|avg_grade\n");
+        printf(" %-6s %-6s %3d   %3d     %3d     %3.1f\n", student[target].name, student[target].id, student[target].math, student[target].phy, student[target].eng, avg[target]);
+    }
+    ch = getch();
 }
-void dfunction(){}
-void efunction(){}
+void dfunction()
+{
+    int i;
+    char ch;
+    system("cls");
+    printf("No.|Name  |  ID  |Math|Physics|English|avg_grade\n"); // 顯示排名
+    for (i = 0; i < temp; i++)
+    {
+        printf("%2d  %-6s %-6s %3d   %3d     %3d     %3.1f\n", i + 1, student[rank[i]].name, student[rank[i]].id, student[rank[i]].math, student[rank[i]].phy, student[rank[i]].eng, avg[rank[i]]);
+    }
+    ch = getch();
+}
+int efunction()
+{ // 退出程式
+    char ch = '0';
+    for (;;)
+    {
+
+        if (ch == 89 || ch == 121)
+        {
+            return 0;
+            break;
+        }
+        else if (ch == 78 || ch == 110)
+        {
+            return 1;
+            break;
+        }
+        else
+        {
+            printf("\nleave? (y/n)");
+        }
+        ch = getche();
+    }
+}
